@@ -219,6 +219,13 @@ func (e *Email) Send(addr string, a smtp.Auth) error {
 	return smtp.SendMail(addr, a, from.Address, to, raw)
 }
 
+func (e *Email) String() string {
+	if e == nil {
+		return "<nil>"
+	}
+	return fmt.Sprintf("Email(%+v)", *e)
+}
+
 // Attachment is a struct representing an email attachment.
 // Based on the mime/multipart.FileHeader struct, Attachment contains the name, MIMEHeader, and content of the attachment in question
 type Attachment struct {
